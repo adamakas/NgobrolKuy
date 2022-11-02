@@ -60,12 +60,11 @@
         app:layout_constraintTop_toBottomOf="@id/profilePic" />
 
 
-    <android.widget.Button
-        android:id="@+id/profil_btnLewati"
+    <TextView
+        android:id="@+id/btnLewati"
         android:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
         android:text="Lewati"
         android:fontFamily="@font/redhatdisplay_regular"
         android:textStyle="bold"
@@ -76,20 +75,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <android.widget.Button
-        android:id="@+id/profil_btnLanjut"
+    <Button
+        android:id="@+id/btnLanjut"
         android:visibility="invisible"
+        android:text="LANJUT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_outline"
+        app:cardCornerRadius="32dp"
         android:backgroundTint="@color/pink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_margin="32dp"
-        android:text="Lanjut"
-        android:textAllCaps="false"
-        android:fontFamily="@font/redhatdisplay_regular"
-        android:textStyle="bold"
-        android:textSize="12pt"
-        android:textColor="@color/white"/>
+        android:layout_margin="36dp">
+
+    </Button>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

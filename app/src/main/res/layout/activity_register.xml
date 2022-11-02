@@ -55,7 +55,7 @@
                 android:layout_margin="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Masukkan username Anda"
+                android:hint="Masukkan username Anda"
                 android:textSize="8pt"
                 android:textColor="@color/light_gray"/>
 
@@ -84,7 +84,7 @@
                 android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Masukkan email Anda"
+                android:hint="Masukkan email Anda"
                 android:textSize="8pt"
                 android:textColor="@color/light_gray"/>
 
@@ -143,7 +143,7 @@
                 android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Masukkan lagi password Anda"
+                android:hint="Masukkan lagi password Anda"
                 android:textSize="8pt"
                 android:textColor="@color/light_gray"/>
 

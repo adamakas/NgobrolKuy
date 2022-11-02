@@ -17,13 +17,7 @@
             android:name=".ConfirmChangePasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".ConfirmActivity"
-            android:exported="false" />
-        <activity
             android:name=".ChangePasswordActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LupaPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".SettingActivity"

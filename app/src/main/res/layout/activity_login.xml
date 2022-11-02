@@ -76,13 +76,11 @@
             android:backgroundTint="@color/white">
 
             <EditText
-                android:id="@+id/login_etUsername"
-                android:layout_margin="10dp"
+                android:id="@+id/etUsername"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="Masukkan username Anda"
                 android:textSize="8pt"
-                android:background="@color/white"
                 android:textColor="@color/light_gray"/>
 
         </androidx.cardview.widget.CardView>
@@ -105,20 +103,18 @@
             android:backgroundTint="@color/white">
 
             <EditText
-                android:id="@+id/login_etPassword"
-                android:layout_margin="10dp"
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="Masukkan password Anda"
                 android:textSize="8pt"
                 android:inputType="textPassword"
-                android:background="@color/white"
                 android:textColor="@color/light_gray"/>
 
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/login_tvForget"
+            android:id="@+id/btnLupa_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -129,33 +125,30 @@
 
     </LinearLayout>
 
-    <android.widget.Button
-        android:id="@+id/login_btnLogin"
+    <Button
+        android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_outline"
-        android:backgroundTint="@color/pink"
+        app:cardCornerRadius="32dp"
         android:text="LOGIN"
-        android:fontFamily="@font/redhatdisplay_regular"
-        android:textStyle="bold"
-        android:textSize="12pt"
-        android:textColor="@color/white"
+        android:textSize="24dp"
+        android:backgroundTint="@color/pink"
         app:layout_constraintTop_toBottomOf="@id/inputList"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"
-        />
-    <android.widget.Button
-        android:id="@+id/login_btnAkun"
+        android:layout_marginTop="32dp">
+
+    </Button>
+
+    <Button
+        android:id="@+id/btnBelum_punya_akun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Belum punya akun?"
         android:fontFamily="@font/redhatdisplay_regular"
         android:textStyle="bold"
-        android:textSize="12pt"
         android:textColor="@color/white"
         android:layout_margin="32dp"
-        android:textAllCaps="false"
         android:background="@drawable/rounded_outline"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

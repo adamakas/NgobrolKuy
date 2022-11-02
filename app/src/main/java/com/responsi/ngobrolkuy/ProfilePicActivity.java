@@ -12,65 +12,96 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ProfilePicActivity extends AppCompatActivity {
-    private ImageView btnEdit, imgProfile;
-    private int GALLERY_REQUEST_CODE = 1;
-    private Uri imageUri;
-    private Button btnLanjut, btnLewati;
+    private CircleImageView foto_profil;
+    private Button lanjut;
+    private TextView lewati;
+    private ImageView pensil;
+    private static final int GALLERY_REQUEST_CODE = 1;
+    private static final String TAG = ProfilePicActivity.class.getCanonicalName();
+    private Bitmap bitmap;
+    private Uri imgUri = null;
+    private boolean change_img = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_pic);
 
-        btnEdit = findViewById(R.id.pinkCircle);
-        imgProfile = findViewById(R.id.profilePic);
-        btnLanjut = findViewById(R.id.profil_btnLanjut);
-        btnLewati = findViewById(R.id.profil_btnLewati);
+        foto_profil = findViewById(R.id.profilePic);
+        lanjut = findViewById(R.id.btnLanjut);
+        lewati = findViewById(R.id.btnLewati);
+        pensil = findViewById(R.id.pinkCircle);
+        String usname = getIntent().getExtras().getString("username");
+        String pass = getIntent().getExtras().getString("password");
 
-        btnEdit.setOnClickListener(new View.OnClickListener() {
+        foto_profil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityForResult(new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI), GALLERY_REQUEST_CODE);
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, GALLERY_REQUEST_CODE);
             }
         });
 
-        btnLewati.setOnClickListener(new View.OnClickListener() {
+        pensil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ProfilePicActivity.this, HomeChatActivity.class));
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, GALLERY_REQUEST_CODE);
             }
         });
-        btnLanjut.setOnClickListener(new View.OnClickListener() {
+
+        lanjut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ProfilePicActivity.this, HomeChatActivity.class));
+                Intent intent = new Intent(ProfilePicActivity.this, HomeChatActivity.class);
+                intent.putExtra("foto_profil", imgUri.toString());
+                intent.putExtra("username", usname);
+                intent.putExtra("password", pass);
+                startActivity(intent);
             }
         });
+
+        lewati.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfilePicActivity.this, HomeChatActivity.class);
+                intent.putExtra("username", usname);
+                intent.putExtra("password", pass);
+                startActivity(intent);
+            }
+        });
+
     }
-
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_CANCELED) {
-            Toast.makeText(this, "Load image cancelled", Toast.LENGTH_SHORT).show();
+        if (resultCode == RESULT_CANCELED){
+            Toast.makeText(this, "     Batal mengambil gambar     ", Toast.LENGTH_SHORT).show();
             return;
-        }
-        if (requestCode == GALLERY_REQUEST_CODE) {
-            if (data != null) {
-                try {
-                    imageUri = data.getData();
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-                    imgProfile.setImageBitmap(bitmap);
-                    btnLewati.setVisibility(View.INVISIBLE);
-                    btnLanjut.setVisibility(View.VISIBLE);
-                } catch (Exception e) {
-                    Toast.makeText(this, "Can't load image", Toast.LENGTH_SHORT).show();
+        } else {
+            if (requestCode == GALLERY_REQUEST_CODE){
+                if (data != null){
+                    try {
+                        change_img = true;
+                        imgUri = data.getData();
+                        bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),imgUri);
+                        foto_profil.setImageBitmap(bitmap);
+                        lewati.setVisibility(View.INVISIBLE);
+                        lanjut.setVisibility(View.VISIBLE);
+                    } catch (IOException e) {
+                        Toast.makeText(this, "     Gagal mengambil gambar     ", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, e.getMessage());
+                    }
                 }
             }
-            else Toast.makeText(this, "Condition not met", Toast.LENGTH_SHORT).show();
         }
     }
 }
