@@ -49,9 +49,11 @@
             app:cardCornerRadius="40dp"
             android:backgroundTint="@color/white">
 
-            <TextView
+            <EditText
+                android:id="@+id/register_etUsername"
+                android:background="@color/white"
                 android:layout_margin="10dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Masukkan username Anda"
                 android:textSize="8pt"
@@ -76,9 +78,11 @@
             app:cardCornerRadius="40dp"
             android:backgroundTint="@color/white">
 
-            <TextView
+            <EditText
+                android:id="@+id/register_etEmail"
                 android:layout_margin="10dp"
-                android:layout_width="wrap_content"
+                android:background="@color/white"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Masukkan email Anda"
                 android:textSize="8pt"
@@ -103,11 +107,14 @@
             app:cardCornerRadius="40dp"
             android:backgroundTint="@color/white">
 
-            <TextView
+            <EditText
+                android:id="@+id/register_etPassword"
                 android:layout_margin="10dp"
-                android:layout_width="wrap_content"
+                android:background="@color/white"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Masukkan password Anda"
+                android:hint="Masukkan password Anda"
+                android:inputType="textPassword"
                 android:textSize="8pt"
                 android:textColor="@color/light_gray"/>
 
@@ -130,9 +137,11 @@
             app:cardCornerRadius="40dp"
             android:backgroundTint="@color/white">
 
-            <TextView
+            <EditText
+                android:id="@+id/register_etConfirm"
                 android:layout_margin="10dp"
-                android:layout_width="wrap_content"
+                android:background="@color/white"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Masukkan lagi password Anda"
                 android:textSize="8pt"
@@ -142,32 +151,24 @@
 
     </LinearLayout>
 
-    <androidx.cardview.widget.CardView
+    <android.widget.Button
+        android:id="@+id/register_btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="32dp"
+        android:background="@drawable/rounded_outline"
         android:backgroundTint="@color/pink"
         app:layout_constraintTop_toBottomOf="@id/inputList"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp">
+        android:layout_marginTop="32dp"
+        android:text="REGISTER"
+        android:fontFamily="@font/redhatdisplay_regular"
+        android:textStyle="bold"
+        android:textSize="12pt"
+        android:textColor="@color/white"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="REGISTER"
-            android:fontFamily="@font/redhatdisplay_regular"
-            android:textStyle="bold"
-            android:textSize="12pt"
-            android:textColor="@color/white"
-            android:layout_marginStart="18dp"
-            android:layout_marginEnd="18dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"/>
-
-    </androidx.cardview.widget.CardView>
-
-    <TextView
+    <android.widget.Button
+        android:id="@+id/register_btnAkun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sudah punya akun?"
@@ -175,10 +176,10 @@
         android:textStyle="bold"
         android:textSize="12pt"
         android:textColor="@color/white"
+        android:textAllCaps="false"
         android:layout_margin="32dp"
         android:background="@drawable/rounded_outline"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
